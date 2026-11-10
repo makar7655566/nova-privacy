@@ -1087,12 +1087,11 @@ try{if(localStorage.getItem('nova_splash_off')==='1'){const s=document.getElemen
   <div class="wl-slide"><span class="wl-badge">БЕТА</span><h2>Добро пожаловать в Nova AI</h2>
     <p>Ваш ИИ-ассистент: чат, фото, музыка, голос и поиск в интернете.</p>
     <div class="wl-note">🧪 Приложение пока в <b>бета-версии</b>: возможны ошибки. Скоро появится <b>служба поддержки</b>.</div>
-    <div class="wl-note">⚠️ <b>Чтобы приложение работало, нужно подключить ИИ:</b> бесплатно через <b>Puter</b> или со своим ключом <b>Gemini</b>. Как это сделать — на следующих страницах.</div>
     <p style="margin-top:14px">Листайте дальше: покажем, как подключить ИИ — бесплатно или на полную мощность. В конце — правила и соглашение.</p></div>
-  <div class="wl-slide"><h2>🆓 Бесплатно: через Puter</h2>
-    <p>Самый простой способ, ключи не нужны.</p>
-    <ol><li>Откройте <b>Настройки</b> → <b>ИИ и ключи</b>.</li><li>Нажмите <b>«Войти в Puter»</b> и зарегистрируйтесь (бесплатно).</li><li>Выберите <b>«Сначала Puter, потом ключи»</b>.</li></ol>
-    <div class="wl-note">Ответы идут из бесплатной месячной квоты вашего аккаунта Puter. Когда она кончится, Nova сама переключится на ваши ключи (если они добавлены).</div></div>
+  <div class="wl-slide"><h2>🆓 Без ключей</h2>
+    <p>Nova работает сразу, без ключей и регистрации.</p>
+    <ol><li>Откройте <b>Настройки</b> → <b>Режим без ключей</b>.</li><li>Включите переключатель (он включён по умолчанию, если ключа нет).</li></ol>
+    <div class="wl-note">⚠️ В этом режиме ответы <b>проще и слабее</b>, чем на своём ключе Gemini, а фото, видео, музыка и поиск в интернете не работают. Если бесплатный ИИ недоступен, Nova сама переключится на ваши ключи (если они добавлены).</div></div>
   <div class="wl-slide wl-nocloud"><h2>🚀 Мощнее: свой ключ Gemini</h2>
     <p>Даёт самые умные ответы, разбор фото и видео.</p>
     <ol><li>Включите <b>VPN</b>.</li><li>Откройте <b>aistudio.google.com/app/apikey</b> → <b>Create API key</b> → скопируйте ключ (начинается с AIza).</li><li>В Nova: <b>Настройки → ИИ и ключи</b> → вставьте ключ → <b>«Сохранить ключ»</b>.</li><li>Теперь VPN можно выключить — <b>но только если настроен прокси</b> (следующая страница). Без прокси Gemini из России без VPN может не открываться.</li></ol></div>
@@ -1103,7 +1102,7 @@ try{if(localStorage.getItem('nova_splash_off')==='1'){const s=document.getElemen
   <div class="wl-slide"><h2>📄 Правила и соглашение</h2>
     <div class="wl-legal" id="wlLegal"></div>
     <div id="wlAcceptRow" style="margin-top:12px">
-      <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4"><input type="checkbox" id="wlChk" style="margin-top:2px" onchange="document.getElementById('wlGo').disabled=!this.checked"><span>Мне есть 18 лет. Я прочитал(а) и принимаю условия и даю согласие на обработку и передачу данных, описанную выше.</span></label>
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4"><input type="checkbox" id="wlChk" style="margin-top:2px" onchange="document.getElementById('wlGo').disabled=!this.checked"><span>Мне есть 12 лет (если мне нет 18 — я пользуюсь приложением с разрешения родителей). Я прочитал(а) и принимаю условия и даю согласие на обработку и передачу данных, описанную выше.</span></label>
       <button class="wl-btn pri" id="wlGo" disabled style="width:100%;margin-top:10px" onclick="wlAccept()">Принимаю и начать</button>
     </div></div>
 </div>
@@ -1474,6 +1473,11 @@ try{if(localStorage.getItem('nova_splash_off')==='1'){const s=document.getElemen
         <div class="setbtn-t"><div class="setbtn-tt">Аккаунт</div><div class="setbtn-td" id="setAccPreview">Гостевой режим</div></div>
         <div class="setbtn-ch">›</div>
       </div>
+      <div class="setbtn" onclick="openSSub('nokey')">
+        <div class="setbtn-ico c5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" width="18" height="18"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="setbtn-t"><div class="setbtn-tt">Режим без ключей</div><div class="setbtn-td" id="setNoKeyPreview">Бесплатный ИИ без ключей</div></div>
+        <div class="setbtn-ch">›</div>
+      </div>
       <div class="setbtn" onclick="openSSub('ai')">
         <div class="setbtn-ico c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" width="18" height="18"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <div class="setbtn-t"><div class="setbtn-tt">ИИ и ключи</div><div class="setbtn-td">Gemini, Tavily, музыка, прокси</div></div>
@@ -1561,26 +1565,41 @@ try{if(localStorage.getItem('nova_splash_off')==='1'){const s=document.getElemen
       <div class="scard">
         <div class="srow">
           <div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></div>
-          <div class="sct"><div class="slb" id="accEmailLbl">Не выполнен вход</div><div class="sde">Email используется только локально на этом устройстве. Чаты и данные не привязаны к аккаунту — при регистрации или входе ничего не пропадёт.</div>
+          <div class="sct"><div class="slb" id="accEmailLbl">Не выполнен вход</div><div class="sde" id="accDesc">Email используется только локально на этом устройстве. Чаты и данные не привязаны к аккаунту — при регистрации или входе ничего не пропадёт.</div>
+            <button class="sbtn" id="syncNowBtn" style="display:none;" onclick="syncNow()">🔄 Синхронизировать сейчас</button>
             <button class="sbtn" id="accRegisterBtn" style="background:linear-gradient(135deg,var(--a1),var(--a3));display:none;" onclick="openRegisterFromAccount()">✨ Зарегистрироваться</button>
             <button class="sbtn" style="background:rgba(255,255,255,.06);border-color:var(--border2);" onclick="doLogout()">Выйти из аккаунта</button>
             <button class="sbtn" style="background:linear-gradient(135deg,rgba(239,68,68,.22),rgba(239,68,68,.12));border-color:rgba(239,68,68,.35);color:#fca5a5;margin-top:6px;" onclick="confirmDeleteAccount()">🗑 Удалить аккаунт и все данные</button>
             <div class="sst" id="accSt"></div>
+            <div class="sde" style="margin-top:10px;opacity:.6;" id="appVerLbl"></div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ═══ РЕЖИМ БЕЗ КЛЮЧЕЙ ═══ -->
+    <div class="ssub" id="ssub-nokey">
+      <div class="ssub-hdr"><button class="ssub-back" onclick="closeSSub()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m15 18-6-6 6-6"/></svg></button><span>Режим без ключей</span></div>
+      <div class="scard">
+        <h3>Работать без ключей</h3>
+        <div class="srow" style="align-items:center;">
+          <div class="sic">⚡</div>
+          <div class="sct"><div class="slb">Сначала без ключей</div><div class="sde">Nova сначала пробует бесплатный ИИ без ключей. Если он ответил — продолжает так же. Если не работает — сама переходит на ваши ключи.</div></div>
+          <label class="toggle-sw" style="margin-top:2px;">
+            <input type="checkbox" id="noKeyToggle" onchange="setNoKey(this.checked)">
+            <span class="toggle-sw-track"><span class="toggle-sw-thumb"></span></span>
+          </label>
+        </div>
+        <div class="wl-note" style="margin-top:10px;">⚠️ <b>Внимание:</b> бесплатный ИИ без ключей работает хуже и «тупее»: ответы проще, короче и менее точные, бывают сбои и очереди. Фото, видео, музыка и поиск в интернете в этом режиме не работают — для них нужен ключ Gemini.</div>
+        <div class="sst" id="noKeySt"></div>
       </div>
     </div>
 
     <!-- ═══ ИИ И КЛЮЧИ ═══ -->
     <div class="ssub" id="ssub-ai">
       <div class="ssub-hdr"><button class="ssub-back" onclick="closeSSub()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m15 18-6-6 6-6"/></svg></button><span>ИИ и ключи</span></div>
-      <div class="scard srcCard"><h3>Откуда берётся ИИ</h3>
-        <div class="sde"><b>Puter</b> — ИИ без ключей: ответы идут из бесплатной месячной квоты вашего аккаунта Puter. Фото, видео, интернет и музыка всегда идут через Gemini и ключи.</div>
-        <button class="sbtn" id="srcKeysBtn" onclick="setAiSource('keys')">🔑 Только ключи</button>
-        <button class="sbtn" id="srcPuterBtn" style="margin-top:6px;" onclick="setAiSource('puter')">🧩 Сначала Puter, потом ключи</button>
-        <button class="sbtn" style="background:rgba(255,255,255,.06);border-color:var(--border2);margin-top:6px;" onclick="puterSignIn()">👤 Войти в Puter</button>
-        <button class="sbtn" style="background:rgba(255,255,255,.06);border-color:var(--border2);margin-top:6px;" onclick="openWelcome(true)">📄 Приветствие, правила и соглашение</button>
-        <div class="sst" id="srcSt"></div>
+      <div class="scard srcCard"><h3>Правила</h3>
+        <button class="sbtn" style="background:rgba(255,255,255,.06);border-color:var(--border2);" onclick="openWelcome(true)">📄 Приветствие, правила и соглашение</button>
       </div>
       <div class="scard cloudOnly"><h3>Всё уже подключено</h3><div class="sde">Никакие ключи вводить не нужно: Nova работает через ваш аккаунт.</div></div>
       <div class="scard">
@@ -1872,6 +1891,98 @@ function isProTier(){return tier()==='ultra';}
 //  не привязаны к email — они всегда одни и те же на устройстве, значит
 //  регистрация или вход НИКОГДА не стирают и не меняют историю чатов.
 // ══════════════════════════════════════════
+
+// ══════════════════════════════════════════
+//  АККАУНТ С ПЕРЕНОСОМ ДАННЫХ (SYNC)
+//  Впишите адрес вашего Worker (см. SYNC_SETUP.md). Пока пусто — регистрация локальная, как раньше.
+//  На сервер уходят ТОЛЬКО тексты чатов, память и настройки. Ключи, фото, видео, аудио — никогда.
+// ══════════════════════════════════════════
+const SYNC_URL='https://nova-sync.makar-opaleishukew.workers.dev';
+function syncOn(){return !!SYNC_URL&&!cloudOn();}
+function getSyncTok(){try{return localStorage.getItem('nova_sync_token')||'';}catch(e){return'';}}
+const SYNC_PREFS=['nova_name','nova_memory','nova_mem_on','nova_diff','nova_effort','nova_theme','nova_font_scale','nova_web_force','nova_auto_learn','nova_code_mode','nova_suggest_off','nova_splash_off','nova_voice','nova_nokey'];
+let _syncApplying=false,_syncT=null,_syncBusy=false;
+function _stripHeavy(v){
+  if(typeof v==='string')return (v.startsWith('data:')||v.startsWith('@idb:'))?undefined:v;
+  if(Array.isArray(v))return v.map(_stripHeavy).filter(x=>x!==undefined);
+  if(v&&typeof v==='object'){const o={};let dropped=false;for(const k in v){const r=_stripHeavy(v[k]);if(r===undefined){if(v[k]!=null)dropped=true;}else o[k]=r;}if(dropped)o.imgDropped=true;return o;}
+  return v;
+}
+function _syncSnapshot(){
+  let ss=_stripHeavy(JSON.parse(JSON.stringify(sessions,(k,v)=>v)))||[];
+  const prefs={};SYNC_PREFS.forEach(k=>{try{const v=localStorage.getItem(k);if(v!==null)prefs[k]=v;}catch(e){}});
+  let snap={v:1,sessions:ss,cur:curId,prefs};
+  while(JSON.stringify(snap).length>1400000&&snap.sessions.length>1){snap.sessions=snap.sessions.slice(0,-1);} // не влезает — отбрасываем самые старые чаты
+  return snap;
+}
+function _mergeSessions(local,remote){
+  const m=new Map();(local||[]).forEach(x=>m.set(x.id,x));
+  (remote||[]).forEach(r=>{const l=m.get(r.id);if(!l||(r.msgs||[]).length>(l.msgs||[]).length)m.set(r.id,r);});
+  return [...m.values()].sort((a,b)=>(+b.id||0)-(+a.id||0));
+}
+function _adoptRemote(local,remote){
+  return (remote||[]).map(r=>{const l=(local||[]).find(x=>x.id===r.id);return(l&&(l.msgs||[]).length>=(r.msgs||[]).length)?l:r;});
+}
+async function _syncReq(method,path,body){
+  const r=await fetch(SYNC_URL+path,{method,headers:{'Content-Type':'application/json','Authorization':'Bearer '+getSyncTok()},body:body?JSON.stringify(body):undefined});
+  if(r.status===401){try{localStorage.removeItem('nova_sync_token');}catch(e){}doLogout();throw new Error('auth');}
+  const j=await r.json().catch(()=>({}));
+  return {status:r.status,ok:r.ok,j};
+}
+function syncSchedule(){
+  if(_syncApplying||!syncOn()||!getSyncTok())return;
+  try{localStorage.setItem('nova_sync_dirty','1');}catch(e){}
+  clearTimeout(_syncT);_syncT=setTimeout(()=>{syncPush().catch(()=>{});},12000);
+}
+async function syncPush(){
+  if(!syncOn()||!getSyncTok()||_syncBusy)return false;
+  _syncBusy=true;
+  try{
+    for(let i=0;i<2;i++){
+      const base=+(localStorage.getItem('nova_sync_ts')||0);
+      const res=await _syncReq('PUT','/sync',{data:_syncSnapshot(),base});
+      if(res.ok){localStorage.setItem('nova_sync_ts',String(res.j.updated));localStorage.setItem('nova_sync_dirty','0');return true;}
+      if(res.status===409&&res.j.data){ // на сервере есть более новые данные с другого устройства — объединяем и пробуем ещё раз
+        _syncApplying=true;sessions=_mergeSessions(sessions,res.j.data.sessions);
+        localStorage.setItem('nova_sync_ts',String(res.j.updated));
+        try{writeSave(true);renderSess();}catch(e){}
+        _syncApplying=false;continue;
+      }
+      return false;
+    }
+  }catch(e){return false;}
+  finally{_syncBusy=false;}
+  return false;
+}
+// returns true, если из облака пришли данные и их применили
+async function syncPull(atLogin){
+  if(!syncOn()||!getSyncTok())return false;
+  try{
+    const res=await _syncReq('GET','/sync');
+    if(!res.ok)return false;
+    const remote=res.j.data,ts=+res.j.updated||0;
+    if(!remote){await syncPush();return false;}
+    const lastTs=+(localStorage.getItem('nova_sync_ts')||0);
+    if(ts===lastTs&&localStorage.getItem('nova_sync_dirty')!=='1')return false;
+    const dirty=localStorage.getItem('nova_sync_dirty')==='1'||!lastTs;
+    _syncApplying=true;
+    sessions=dirty?_mergeSessions(sessions,remote.sessions):_adoptRemote(sessions,remote.sessions);
+    if(!curId||!sessions.find(x=>x.id===curId))curId=(sessions[0]&&sessions[0].id)||null;
+    if(atLogin&&remote.prefs){Object.keys(remote.prefs).forEach(k=>{if(SYNC_PREFS.includes(k)){try{localStorage.setItem(k,remote.prefs[k]);}catch(e){}}});}
+    localStorage.setItem('nova_sync_ts',String(ts));
+    try{writeSave(true);}catch(e){}
+    _syncApplying=false;
+    if(dirty)await syncPush();
+    if(!atLogin){try{renderSess();renderMsgs();}catch(e){}}
+    return true;
+  }catch(e){_syncApplying=false;return false;}
+}
+async function syncNow(){
+  const st=document.getElementById('accSt');if(st){st.className='sst';st.textContent='Синхронизация…';}
+  const a=await syncPull(false),b=await syncPush();
+  if(st){st.className='sst '+((a||b)?'ok':'er');st.textContent=(a||b)?'✅ Данные синхронизированы':'❌ Не удалось синхронизировать. Проверьте интернет.';}
+}
+
 let loginTab='in';
 let fromSettings=false; // открыт ли экран входа поверх настроек (а не при запуске)
 function setLoginTab(t){
@@ -1887,6 +1998,26 @@ async function doLogin(){
   const err=document.getElementById('loginErr');
   const btn=document.getElementById('loginGoBtn');
   if(!email||!email.includes('@')){err.textContent='Введите корректный email';return;}
+  if(syncOn()){
+    if(loginTab==='up'&&!document.getElementById('consentChk').checked){err.textContent='Нужно согласие с политикой конфиденциальности';return;}
+    if(pass.length<8){err.textContent='Пароль должен быть от 8 символов';return;}
+    btn.disabled=true;err.textContent='Подождите…';
+    try{
+      const r=await fetch(SYNC_URL+(loginTab==='up'?'/auth/register':'/auth/login'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||!j.token){err.textContent=(j.error&&j.error.message)||'Ошибка сервера, попробуйте позже';return;}
+      // другой аккаунт на этом же устройстве — чужие чаты не подмешиваем
+      let prev='';try{prev=localStorage.getItem('nova_sync_email')||'';}catch(e){}
+      if(prev&&prev!==email){sessions=[];curId=null;try{localStorage.removeItem('nova_s');localStorage.removeItem('nova_c');localStorage.removeItem('nova_sync_ts');localStorage.setItem('nova_sync_dirty','0');}catch(e){}}
+      try{localStorage.setItem('nova_sync_token',j.token);localStorage.setItem('nova_sync_email',email);localStorage.setItem('nova_current_user',email);}catch(e){}
+      err.textContent='Загружаю данные…';
+      const changed=await syncPull(true);
+      enterApp(email);err.textContent='';
+      if(changed)location.reload();
+    }catch(e){err.textContent='Нет связи с сервером. Проверьте интернет.';}
+    finally{btn.disabled=false;}
+    return;
+  }
   if(cloudOn()){
     if(loginTab==='up'&&!document.getElementById('consentChk').checked){err.textContent='Нужно согласие с политикой конфиденциальности';return;}
     if(pass.length<8){err.textContent='Пароль должен быть от 8 символов';return;}
@@ -1947,7 +2078,7 @@ function openRegisterFromAccount(){
   setLoginTab('up');
 }
 function doLogout(){
-  try{localStorage.removeItem('nova_current_user');localStorage.removeItem('nova_token');}catch(e){}
+  try{localStorage.removeItem('nova_current_user');localStorage.removeItem('nova_token');localStorage.removeItem('nova_sync_token');localStorage.removeItem('nova_sync_ts');}catch(e){}
   document.getElementById('loginEmail').value='';
   document.getElementById('loginPass').value='';
   fromSettings=false;
@@ -1959,6 +2090,7 @@ function doLogout(){
 function confirmDeleteAccount(){
   const email=(()=>{try{return localStorage.getItem('nova_current_user');}catch(e){return null;}})();
   if(!confirm('Это удалит аккаунт и ВСЕ данные приложения (сессии, ключ, имя) с этого устройства без возможности восстановления. Продолжить?'))return;
+  try{if(syncOn()&&getSyncTok())fetch(SYNC_URL+'/auth/delete',{method:'POST',headers:{'Authorization':'Bearer '+getSyncTok()},keepalive:true});['nova_sync_token','nova_sync_ts','nova_sync_dirty','nova_sync_email','nova_memory'].forEach(k=>localStorage.removeItem(k));}catch(e){}
   try{if(cloudOn()&&getToken())fetch(NOVA_CLOUD+'/auth/delete',{method:'POST',headers:{'Authorization':'Bearer '+getToken()},keepalive:true});localStorage.removeItem('nova_token');}catch(e){}
   try{
     if(email){
@@ -1980,6 +2112,7 @@ function checkSession(){
   let email=null;
   try{email=localStorage.getItem('nova_current_user');}catch(e){}
   if(email&&(!cloudOn()||getToken())){enterApp(email);}
+  if(syncOn()&&getSyncTok())setTimeout(()=>{syncPull(false).catch(()=>{});},1800);
   const rb=document.getElementById('accRegisterBtn');if(rb)rb.style.display=email?'none':'';
 }
 
@@ -2044,9 +2177,11 @@ function init(){
     if(localStorage.getItem(testKey)!=='1')throw new Error('mismatch');
     localStorage.removeItem(testKey);
   });
+  safeStep('appVer',()=>{const e=document.getElementById('appVerLbl');if(e)e.textContent='Nova AI · версия '+APP_VERSION;});
+  safeStep('syncUI',()=>{if(!syncOn())return;initConsentUI();const d=document.getElementById('accDesc');if(d)d.textContent='Аккаунт хранится на сервере: чаты (только текст), память и настройки переносятся на другие ваши устройства. Ключи, фото и видео остаются на устройстве.';const b=document.getElementById('syncNowBtn');if(b)b.style.display='';});
   safeStep('cloudUI',()=>{if(!cloudOn())return;document.body.classList.add('cloud');initConsentUI();const c=document.getElementById('cartKeyInp');if(c){c.style.display='none';if(c.previousElementSibling)c.previousElementSibling.style.display='none';}});
   safeStep('welcome',initWelcome);
-  safeStep('aiSource',()=>{renderAiSource();if(getAiSource()==='puter')loadPuter().catch(()=>{});});
+  safeStep('aiSource',()=>{renderAiSource();});
   safeStep('webForce',()=>{webForce=getWebForce();});
   safeStep('autoLearn',()=>{autoLearn=getAutoLearn();});
   safeStep('codeMode',()=>{setCodeMode(getCodeMode());});
@@ -2630,6 +2765,7 @@ function getDateContext(){
 function getSys(name,kind,webMode,codeModeOn){
   const n=name?` Пользователя зовут ${name}, иногда обращайся по имени.`:'';
   let base=`Ты Nova — умный дружелюбный ИИ-ассистент, разработанный компанией Nova.${n} ${getDateContext()} Отвечай на русском. Пиши код в \`\`\`. По умолчанию отвечай по делу и без лишней воды — не растягивай ответ, если вопрос простой. Отвечай развёрнуто и по существу на основе своих знаний, не отказывайся отвечать из-за того, что не уверен на 100% — дай лучший возможный ответ. Если спросят, кто тебя создал, какая компания или модель за тобой стоит — отвечай, что тебя разработала компания Nova; не упоминай другие компании или названия моделей как создателя. ПРАВИЛО ПРО ССЫЛКИ: без прямой просьбы пользователя сам по себе не вставляй кликабельные ссылки в ответ (просто называй словами, что и где поискать). Но если пользователь ЯВНО просит ссылку/источник — дай конкретную ссылку в формате [Текст](URL) на тот сайт/ресурс, который по твоим знаниям должен существовать, и добавь короткую честную пометку в конце, что не можешь гарантировать на 100% что именно этот адрес откроется (память может быть устаревшей). Ссылки на карты (см. правило про местоположение ниже) и ссылки из реального поиска в интернете — исключение, они не требуют такой пометки, так как проверены.`;
+  base+=' ВОЗРАСТНОЕ ОГРАНИЧЕНИЕ 12+: приложением могут пользоваться дети от 12 лет. Не создавай и не обсуждай откровенный сексуальный контент, подробное насилие и жестокость, инструкции по наркотикам, оружию, самоповреждению, не используй грубую нецензурную брань. На такие просьбы вежливо откажи и предложи безопасную тему. Если человеку плохо или он пишет о желании навредить себе — ответь по-доброму, посоветуй поговорить с близким взрослым или позвонить на детский телефон доверия 8-800-2000-122 (бесплатно, по России).';
   const mem=getMemOn()?getMemory():[];
   if(mem.length){
     base+=` Вот что ты уже знаешь о пользователе из прошлых разговоров (используй уместно, не перечисляй это списком без повода): ${mem.map(f=>'«'+f+'»').join('; ')}.`;
@@ -2686,8 +2822,8 @@ function effortPrompt(r){
 // 5 ступеней глубины. У Nova Pro доступны 0–3, у Nova Ultra всегда на ступень глубже (1–4), а Nova Lite не размышляет вовсе.
 // Раньше на «Максимуме» Pro и Ultra получали одинаковую глубину — теперь у Ultra есть своя, высшая ступень 4.
 // Nova Pro: 4 ступени (ступень «Максимум» сильная, но без огромных бюджетов — чтобы не зависала)
-const THINK_LEVEL=['medium','high','high','high'];   // Nova Pro: даже «Низкое» думает заметно больше Lite
-const THINK_BUDGET=[3000,8000,12000,16000];
+const THINK_LEVEL=['low','low','medium','high'];   // Nova Pro: даже «Низкое» думает заметно больше Lite
+const THINK_BUDGET=[1024,1500,4096,8000];
 const LITE_LEVEL=['low','medium','high'];            // Nova Lite: только до «Высокого»
 const LITE_BUDGET=[512,2048,6000];
 function isLiteTier(){return tier()!=='ultra';}
@@ -2707,8 +2843,8 @@ function getMaxTok(){
 }
 // ── Модели Gemini подбираются автоматически: приложение спрашивает у Google, какие модели доступны именно вашему ключу.
 // Gemini 2.5 Google отключает (16 октября 2026), поэтому берём только поколение 3 и новее. Список кешируется на 12 часов.
-const MODELS_KEY='nova_models_v1';
-function defaultModels(){return {pro:['gemini-3.5-flash','gemini-flash-latest','gemini-3-flash-preview'],lite:['gemini-flash-lite-latest','gemini-3.1-flash-lite']};}
+const MODELS_KEY='nova_models_v2'; // v2: сбрасывает старый кэш, где первой стояла нерабочая gemini-3.5-flash
+function defaultModels(){return {pro:['gemini-flash-latest','gemini-3-flash-preview','gemini-3.5-flash'],lite:['gemini-flash-lite-latest','gemini-3.1-flash-lite']};}
 function getModels(){
   try{const c=JSON.parse(localStorage.getItem(MODELS_KEY)||'null');if(c&&c.pro&&c.pro.length&&c.lite&&c.lite.length)return c;}catch(e){}
   return defaultModels();
@@ -2732,8 +2868,9 @@ async function refreshModels(force){
   // сначала стабильные, потом превью; внутри — новее выше
   const order=(a,b)=>(a.preview-b.preview)||(b.ver-a.ver);
   const pick=(lite,alias)=>{
-    const list=parsed.filter(x=>x.lite===lite).sort(order).map(x=>x.id).slice(0,2);
-    if(ids.includes(alias)&&!list.includes(alias))list.push(alias);
+    let list=parsed.filter(x=>x.lite===lite).sort(order).map(x=>x.id).filter(x=>x!==alias).slice(0,2);
+    // стабильный псевдоним Google ставим ПЕРВЫМ: он всегда указывает на рабочую актуальную модель, в отличие от свежих превью
+    if(ids.includes(alias))list.unshift(alias);
     return list.slice(0,3);
   };
   const pro=pick(false,'gemini-flash-latest'),lite=pick(true,'gemini-flash-lite-latest');
@@ -2745,8 +2882,16 @@ function novaModelChain(){
   // Nova Pro: лучшие доступные Flash 3-го поколения. Слабая Lite вместо Pro не подставляется никогда.
   // Nova Lite: только лёгкие модели — своя квота, квоту Pro не трогаем.
   const m=getModels();
-  const c=(isProTier()?m.pro:m.lite).slice(0,3);
-  if(c.length<2)c.push(c[0]); // одна модель — повторяем её для повторной попытки
+  let c;
+  if(isProTier()){
+    // 1) стабильная gemini-flash-latest, 2) вторая Pro-модель, 3) если обе недоступны — лёгкая (лучше быстрый ответ, чем бесконечное ожидание)
+    c=m.pro.slice(0,2);
+    if(c.length<2)c.push(c[0]);
+    c.push(m.lite[0]);
+  } else {
+    c=m.lite.slice(0,3);
+    if(c.length<2)c.push(c[0]);
+  }
   return c;
 }
 
@@ -3206,7 +3351,7 @@ async function send(){
   const ta=document.getElementById('ta');
   const text=ta.value.trim();
   if((!text&&!pendingImg&&!pendingImages.length)||busy)return;
-  const key=getKey();if(!key&&getAiSource()!=='puter'){needAiSetup();return;}
+  const key=getKey();if(!key&&!getNoKey()){openPanel('settings');return;}
   if(!curId){const s=mkSess();curId=s.id;}
   const sess=sessions.find(s=>s.id===curId);
   await ensureLocation();
@@ -3430,14 +3575,15 @@ function createReveal(el,area,pre){
 //  Режим «Сначала Puter, потом ключи»: обычные текстовые ответы идут через Puter; если он недоступен,
 //  не вошли или квота кончилась — тихо отвечает Gemini на ключах. Фото/видео/интернет — всегда Gemini.
 // ══════════════════════════════════════════
-const LEGAL_VER='2026-10-21';
+const APP_VERSION='1.1.2';
+const LEGAL_VER='2026-11-09';
 function legalHtml(){return `<h4>1. О приложении</h4><p>Nova AI — ИИ-ассистент, который работает на сторонних нейросетях. Приложение находится в бета-версии: возможны ошибки и перерывы в работе. Ответы создаёт нейросеть: они могут быть неточными, неполными или устаревшими и не заменяют консультацию врача, юриста или финансового специалиста. Важные решения проверяйте самостоятельно.</p>
-<h4>2. Правила использования</h4><p>Приложение предназначено для лиц старше 18 лет. Запрещено использовать его для незаконных целей; для нарушения прав, чести и достоинства других людей; для мошенничества, вредоносного кода и намеренной дезинформации; для создания запрещённых законом материалов, в том числе с участием несовершеннолетних. Нельзя выдавать созданные ИИ тексты, фото и музыку за подлинные там, где это вводит людей в заблуждение. За свои запросы и использование результатов отвечаете вы.</p>
-<h4>3. Какие данные и где они хранятся</h4><p>На вашем устройстве хранятся чаты, «память», настройки, ваши ключи доступа, созданные фото и музыка. Разработчик (${OPERATOR_NAME}) эти данные не получает и не хранит.</p><p>Чтобы получить ответ, ваш текст, а также отправленные вами файлы, фото, видео и звук передаются напрямую сторонним сервисам, которые вы подключили: Google (Gemini), Puter, Tavily (поиск), ACE Music (музыка), Cartesia (голос), Cloudflare (если вы настроили прокси). Они обрабатывают данные по своим правилам, в том числе за пределами РФ. Пользуясь соответствующей функцией, вы даёте согласие на такую передачу. Не отправляйте пароли, паспортные и банковские данные, сведения о здоровье и чужие персональные данные без согласия их владельцев.</p><p>Если в вашей версии включена регистрация на сервере разработчика, e-mail и пароль (в защищённом виде) хранятся для входа и подсчёта дневных лимитов и удаляются вместе с аккаунтом.</p><p>Мы не продаём ваши данные. В приложении нет рекламы и сторонней аналитики.</p>
+<h4>2. Правила использования</h4><p>Приложение имеет возрастной рейтинг 12+ и предназначено для лиц старше 12 лет. Пользователям младше 18 лет рекомендуется пользоваться им вместе с родителями или с их разрешения. Запрещено использовать его для незаконных целей; для нарушения прав, чести и достоинства других людей; для мошенничества, вредоносного кода и намеренной дезинформации; для создания запрещённых законом материалов, в том числе с участием несовершеннолетних. Нельзя выдавать созданные ИИ тексты, фото и музыку за подлинные там, где это вводит людей в заблуждение. За свои запросы и использование результатов отвечаете вы.</p>
+<h4>3. Какие данные и где они хранятся</h4><p>На вашем устройстве хранятся чаты, «память», настройки, ваши ключи доступа, созданные фото и музыка. ${syncOn()?`Без регистрации разработчик (${OPERATOR_NAME}) эти данные не получает и не хранит.`:`Разработчик (${OPERATOR_NAME}) эти данные не получает и не хранит.`}</p><p>Чтобы получить ответ, ваш текст, а также отправленные вами файлы, фото, видео и звук передаются напрямую сторонним сервисам, которые вы подключили: Google (Gemini), Pollinations и Puter (режим без ключей), Tavily (поиск), ACE Music (музыка), Cartesia (голос), Cloudflare (если вы настроили прокси). Они обрабатывают данные по своим правилам, в том числе за пределами РФ. Пользуясь соответствующей функцией, вы даёте согласие на такую передачу. Не отправляйте пароли, паспортные и банковские данные, сведения о здоровье и чужие персональные данные без согласия их владельцев.</p>${syncOn()?'<p>Если вы зарегистрируетесь, на сервере разработчика хранятся: e-mail, пароль (только в виде необратимого хеша) и копия <b>текстов</b> ваших чатов, «памяти» и настроек — чтобы вы могли войти и перенести данные на другой телефон. Фото, видео, аудио и ключи доступа на сервер НЕ передаются. Всё это удаляется навсегда вместе с аккаунтом (Настройки → Аккаунт → Удалить аккаунт и все данные).</p>':'<p>Регистрация в этой версии работает только на вашем устройстве: e-mail и пароль на сервер не отправляются.</p>'}<p>Мы не продаём ваши данные. В приложении нет рекламы и сторонней аналитики.</p>
 <h4>4. Ключи доступа</h4><p>Ключи сервисов хранятся только на вашем устройстве. Вы отвечаете за их сохранность и за расходы по ним.</p>
 <h4>5. Удаление данных</h4><p>Удалить свои данные можно в Настройках (удаление аккаунта и данных) или удалением приложения. Данные у сторонних сервисов удаляются по правилам этих сервисов.</p>
 <h4>6. Ответственность</h4><p>Приложение предоставляется «как есть». Сторонние сервисы могут изменить условия или ограничить доступ, и тогда часть функций перестанет работать. Разработчик отвечает в пределах, допускаемых законом.</p>
-<h4>7. Связь и изменения</h4><p>Разработчик: ${OPERATOR_NAME}. Связь: ${CONTACT_EMAIL}. Служба поддержки появится позже. Условия могут меняться; при существенных изменениях приложение попросит принять их снова.</p><p><i>Версия от 21 октября 2026 г.</i></p>`;}
+<h4>7. Связь и изменения</h4><p>Разработчик: ${OPERATOR_NAME}. Связь: ${CONTACT_EMAIL}. Служба поддержки появится позже. Условия могут меняться; при существенных изменениях приложение попросит принять их снова.</p><p><i>Версия от 9 ноября 2026 г.</i></p>`;}
 function wlSlides(){return Array.from(document.getElementById('wlTrack').children).filter(e=>getComputedStyle(e).display!=='none');}
 function wlIndex(){const t=document.getElementById('wlTrack');return Math.round(t.scrollLeft/Math.max(1,t.clientWidth));}
 function wlUpdate(){
@@ -3466,23 +3612,27 @@ function initWelcome(){
   let ok='';try{ok=localStorage.getItem('nova_terms');}catch(e){}
   if(ok!==LEGAL_VER)openWelcome(false);
 }
-function needAiSetup(){
-  alert('Чтобы Nova заработала, подключите ИИ одним из двух способов:\n\n1) БЕСПЛАТНО через Puter: Настройки → ИИ и ключи → «Войти в Puter» (бесплатная регистрация), затем выберите «Сначала Puter, потом ключи».\n\n2) Свой ключ Gemini: aistudio.google.com/app/apikey → Create API key → скопируйте ключ и вставьте в Настройки → ИИ и ключи → «Сохранить ключ».');
-  openPanel('settings');
-  try{openSSub('ai');}catch(e){}
+// ── Режим без ключей: хранится в 'nova_nokey' ('1' вкл, '0' выкл). Если пользователь ещё не выбирал —
+//    включён только когда нет ключа Gemini (без ключа приложение иначе вообще не отвечало бы).
+function getNoKey(){
+  try{const v=localStorage.getItem('nova_nokey');if(v==='1')return true;if(v==='0')return false;
+    if(localStorage.getItem('nova_ai_source')==='puter')return true; // перенос старой настройки
+  }catch(e){}
+  return !getKey();
 }
-function getAiSource(){try{return localStorage.getItem('nova_ai_source')==='puter'?'puter':'keys';}catch(e){return'keys';}}
-function setAiSource(v){
-  try{localStorage.setItem('nova_ai_source',v==='puter'?'puter':'keys');}catch(e){}
-  _puterCool=0;renderAiSource();
-  if(v==='puter')loadPuter().catch(()=>{});
+function getAiSource(){return getNoKey()?'puter':'keys';}
+function setNoKey(v){
+  try{localStorage.setItem('nova_nokey',v?'1':'0');}catch(e){}
+  _puterCool=0;_pollCool=0;renderAiSource();
 }
 function renderAiSource(){
-  const s=getAiSource();
-  [['keys','srcKeysBtn'],['puter','srcPuterBtn']].forEach(([k,id])=>{const b=document.getElementById(id);if(b)b.style.outline=(s===k)?'2px solid var(--a2)':'none';});
-  const t=document.getElementById('srcSt');
-  if(t&&!t.dataset.busy){t.className='sst';t.textContent=s==='puter'?'Сначала Puter. Если он недоступен или квота кончилась — отвечает Gemini на ключах.':'Всегда Gemini на ключах.';}
+  const on=getNoKey();
+  const t=document.getElementById('noKeyToggle');if(t)t.checked=on;
+  const pv=document.getElementById('setNoKeyPreview');if(pv)pv.textContent=on?'Включён: сначала без ключей':'Выключен: только ваши ключи';
+  const st=document.getElementById('noKeySt');
+  if(st&&!st.dataset.busy){st.className='sst';st.textContent=on?(getKey()?'Включено. Сначала бесплатный ИИ без ключей, при сбое — ваши ключи.':'Включено. Ключей нет — отвечает только бесплатный ИИ (проще и слабее).'):'Выключено. Всегда работают ваши ключи.';}
 }
+let _pollCool=0;
 let _puterP=null,_puterCool=0;
 function loadPuter(){
   if(window.puter&&window.puter.ai)return Promise.resolve();
@@ -3504,16 +3654,50 @@ async function puterSignIn(){
   }
   if(t)setTimeout(()=>{delete t.dataset.busy;renderAiSource();},6000);
 }
-async function tryPuterTurn(sess,c){
-  if(getAiSource()!=='puter'||c.hasMedia||c.shouldSearch||Date.now()<_puterCool)return false;
+// Бесплатный ИИ без ключей. Порядок: Puter → Pollinations. Любой сбой — тихо уходим дальше (на ключи).
+function _nkMsgs(sess,c){
+  const arr=[{role:'system',content:getSys(c.name,null,false,false)}]
+    .concat(sess.msgs.slice(-16).map(m=>({role:m.role==='ai'?'assistant':'user',content:brainText(m)})));
+  // результаты поиска в интернете вставляем в последний вопрос — ИИ отвечает по ним
+  if(c.webSrc&&c.webSrc.contextText){const l=arr[arr.length-1];if(l&&l.role==='user')l.content=c.webSrc.contextText+'\n\n'+l.content;}
+  return arr;
+}
+function _nkFinish(sess,c,text,via,se){
+  // те же служебные теги, что и в обычном режиме: убираем их из текста, подсказку показываем кнопкой
+  try{const r=extractMemoryTags(text);if(r.facts.length)addMemoryFacts(r.facts);text=r.cleaned;}catch(e){}
+  let sug=null;
+  try{const r=extractSuggestTag(text);if(r.suggest){text=r.cleaned;if(getSuggestEnabled())sug=r.suggest;}}catch(e){}
+  text=text.replace(/\[\[[^\]]*\]\]/g,'').replace(/\[\[[^\n]*$/,'').trim(); // остатки недописанных тегов
+  if(c.webSrc){
+    try{text=sanitizeInlineLinks(text,(c.webSrc.sources||[]).map(x=>x.url));}catch(e){}
+    try{if(c.shouldSearch)text=ensureSourceLinks(text,c.webSrc.sources);}catch(e){}
+  }
+  const ai={role:'ai',content:text,via:via};
+  if(sug)ai.suggest=sug;
+  if(c.webSrc&&c.webSrc.sources&&c.webSrc.sources.length)ai.sources=c.webSrc.sources;
+  sess.msgs.push(ai);save();
+  if(se)se.remove();
+  document.getElementById('typing')?.remove();
+  c.area.querySelectorAll('.regen-btn').forEach(b=>b.remove());
+  c.area.appendChild(mkMsg(ai,{showRegen:true}));c.area.scrollTop=c.area.scrollHeight;
+  if(c.myEpoch===genEpoch){currentAbortController=null;busy=false;setSendBtnState(false);c.ta.disabled=false;c.ta.placeholder='Напишите сообщение…';document.getElementById('stxt').textContent='Онлайн · Готов';}
+  return true;
+}
+async function tryPuterProvider(sess,c){
+  if(Date.now()<_puterCool)return false;
   try{await loadPuter();}catch(e){_puterCool=Date.now()+10*60000;return false;}
-  const msgs=[{role:'system',content:getSys(c.name,null,false,codeMode)}]
-    .concat(sess.msgs.slice(-24).map(m=>({role:m.role==='ai'?'assistant':'user',content:brainText(m)})));
+  try{if(!(puter.auth&&puter.auth.isSignedIn&&puter.auth.isSignedIn()))return false;}catch(e){return false;} // не входили в Puter — молча пропускаем, окно входа не открываем
   let acc='',reveal=null,se=null;
   try{
-    const resp=await puter.ai.chat(msgs,{stream:true});
-    for await(const part of resp){
-      const tx=part&&part.text;if(!tx)continue;
+    const resp=await puter.ai.chat(_nkMsgs(sess,c),{stream:true});
+    const it=resp[Symbol.asyncIterator]();
+    // если за 25 секунд ничего не пришло — считаем, что Puter недоступен
+    let first=true;
+    while(true){
+      const nx=first?await Promise.race([it.next(),new Promise((_,rj)=>setTimeout(()=>rj(new Error('timeout')),25000))]):await it.next();
+      first=false;
+      if(nx.done)break;
+      const tx=nx.value&&nx.value.text;if(!tx)continue;
       if(!reveal){
         document.getElementById('typing')?.remove();
         se=document.createElement('div');se.className='msg ai';se.id='streamMsg';
@@ -3521,24 +3705,53 @@ async function tryPuterTurn(sess,c){
         c.area.appendChild(se);c.area.scrollTop=c.area.scrollHeight;
         reveal=createReveal(document.getElementById('streamBub'),c.area);
       }
-      acc+=tx;reveal.update(acc);
+      acc+=tx;reveal.update(acc.replace(/\[\[[\s\S]*$/,''));
       if(turnStopRequested)break;
     }
     if(!acc)throw new Error('empty');
     await reveal.finish();
   }catch(e){
-    if(!acc){_puterCool=Date.now()+10*60000;return false;} // ничего не показали — тихо уходим на ключи
+    if(!acc){_puterCool=Date.now()+10*60000;return false;}
     try{reveal.stop();}catch(x){}
   }
-  const shown=reveal?reveal.shownText():acc;
-  const ai={role:'ai',content:turnStopRequested?(shown.trim()+'\n\n⏹️ Вы остановили ответ.'):shown,via:'Puter'};
-  if(turnStopRequested)ai.stopped=true;
-  sess.msgs.push(ai);save();
-  if(se)se.remove();
-  c.area.querySelectorAll('.regen-btn').forEach(b=>b.remove());
-  c.area.appendChild(mkMsg(ai,{showRegen:true}));c.area.scrollTop=c.area.scrollHeight;
-  if(c.myEpoch===genEpoch){currentAbortController=null;busy=false;setSendBtnState(false);c.ta.disabled=false;c.ta.placeholder='Напишите сообщение…';document.getElementById('stxt').textContent='Онлайн · Готов';}
+  let shown=reveal?reveal.shownText():acc;
+  if(turnStopRequested)shown=shown.trim()+'\n\n⏹️ Вы остановили ответ.';
+  _nkFinish(sess,c,shown,'Без ключей',se);
+  if(turnStopRequested)sess.msgs[sess.msgs.length-1].stopped=true;
   return true;
+}
+async function tryPollinationsProvider(sess,c){
+  if(Date.now()<_pollCool)return false;
+  const msgs=_nkMsgs(sess,c);
+  const eps=[
+    ['https://text.pollinations.ai/openai',{model:'openai',messages:msgs,private:true}],
+    ['https://gen.pollinations.ai/v1/chat/completions',{model:'openai',messages:msgs}]
+  ];
+  for(const [u,body] of eps){
+    for(let attempt=0;attempt<2;attempt++){
+      if(turnStopRequested)return false;
+      const ac=new AbortController();const tm=setTimeout(()=>ac.abort(),45000);
+      try{
+        const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ac.signal});
+        if(r.status===429&&attempt===0){clearTimeout(tm);await new Promise(x=>setTimeout(x,3500));continue;} // «один запрос с адреса за раз» — ждём и повторяем
+        if(!r.ok)throw new Error('http '+r.status);
+        const j=await r.json();
+        let txt=(j&&j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content)||'';
+        txt=txt.replace(/\n*---\n*(\*\*)?\s*(Powered by|Support Pollinations)[\s\S]*$/i,'').replace(/\n*\*?\*?Powered by Pollinations[^\n]*/ig,'').trim();
+        if(!txt)throw new Error('empty');
+        clearTimeout(tm);
+        return _nkFinish(sess,c,txt,'Без ключей',null);
+      }catch(e){clearTimeout(tm);break;}
+    }
+  }
+  _pollCool=Date.now()+2*60000;return false;
+}
+async function tryPuterTurn(sess,c){
+  if(!getNoKey()||c.hasMedia)return false;
+  if(codeMode)return false; // режим кода и анализ файлов/фото — только на ключе Gemini
+  if(await tryPollinationsProvider(sess,c))return true;
+  if(turnStopRequested)return false;
+  return await tryPuterProvider(sess,c);
 }
 
 async function runAssistantTurn(sess){
@@ -3549,7 +3762,7 @@ async function runAssistantTurn(sess){
   const hasMedia=!!((media.imgs&&media.imgs.length)||media.b64);
   const kind=(media.imgs&&media.imgs.length)?'image':media.kind;
   const rawText=(hasMedia&&isMediaLabel(uMsg.content))?'':(uMsg.content||'');
-  const key=getKey();if(!key&&getAiSource()!=='puter'){needAiSetup();return;}
+  const key=getKey();if(!key&&!getNoKey()){openPanel('settings');return;}
   turnStopRequested=false;
 
   // typing
@@ -3593,11 +3806,11 @@ const shouldSearch=!hasMedia&&!looksLikeMetaQuestion(queryText)&&(
       webSrc=await webSearch(queryText);
     }
     // ── Puter-first: обычные текстовые ответы без ключей; при отказе — дальше обычный путь на ключах
-    if(await tryPuterTurn(sess,{hasMedia,shouldSearch,area,ta,myEpoch,name}))return;
+    if(await tryPuterTurn(sess,{hasMedia,shouldSearch,webSrc,area,ta,myEpoch,name}))return;
     if(!key){
       document.getElementById('typing')?.remove();busy=false;setSendBtnState(false);ta.disabled=false;ta.placeholder='Напишите сообщение…';
       document.getElementById('stxt').textContent='Онлайн · Готов';
-      alert('Puter сейчас недоступен, а ключ Gemini не добавлен. Войдите в Puter или добавьте ключ: Настройки → ИИ и ключи.');openPanel('settings');return;
+      alert((codeMode||hasMedia)?'Режим кода и анализ фото, видео и файлов работают только с ключом Gemini. Добавьте ключ: Настройки → ИИ и ключи — или выключите режим кода.':'Бесплатный ИИ без ключей сейчас недоступен. Попробуйте через минуту или добавьте ключ Gemini: Настройки → ИИ и ключи.');openPanel('settings');return;
     }
     // ── ЛИМИТЫ: простой локальный счётчик "на всякий случай" — см. блок
     // LIMIT_DEFS выше. Считаем расход именно на этом шаге — сразу перед
@@ -3686,7 +3899,7 @@ const shouldSearch=!hasMedia&&!looksLikeMetaQuestion(queryText)&&(
         const sac=new AbortController();let timedOut=false;
         const mainSig=currentAbortController.signal;
         mainSig.addEventListener('abort',()=>sac.abort());
-        const tmr=setTimeout(()=>{timedOut=true;sac.abort();},60000);
+        const tmr=setTimeout(()=>{timedOut=true;sac.abort();},isProTier()?(effRank()>=3?40000:20000):40000);
         try{
           streamRes=await fetch(`${apiBase()}/v1beta/models/${modelChain[si]}:streamGenerateContent?alt=sse`,{
             method:'POST',
@@ -6413,7 +6626,7 @@ function openPanel(n){
   const map={sessions:'ts',settings:'tg'};
   document.getElementById(map[n])?.classList.add('on');
   if(n==='sessions')renderSess(document.getElementById('srch').value);
-  if(n==='settings'){closeSSub();renderMemoryList();renderVoicePicker();}
+  if(n==='settings'){closeSSub();renderMemoryList();renderVoicePicker();try{renderAiSource();}catch(e){}}
 }
 function closePanel(n){document.getElementById('panel-'+n).classList.remove('on');goChat();}
 function openSSub(name){
@@ -6421,6 +6634,7 @@ function openSSub(name){
   const el=document.getElementById('ssub-'+name);
   if(el)el.classList.add('on');
   if(name==='voice')renderVoicePicker();
+  if(name==='nokey'){try{renderAiSource();}catch(e){}}
   if(name==='api'||name==='ai'){try{renderKeyStatus();}catch(e){}}
   if(name==='memory'){renderMemoryList();updateAutoLearnStatus();}
   if(name==='account'){
@@ -6699,12 +6913,11 @@ function closeLimitsOv(){
 // из видимого текста и превращаем в отдельную кнопку «Давай».
 function extractSuggestTag(text){
   let suggest=null;
-  const cleaned=text.replace(/\[\[\s*ПРЕДЛОЖИТЬ\s*:\s*([^\]]+)\]\]/i,(m,f)=>{suggest=f.trim().replace(/[.?!]+$/,'');return'';}).replace(/[ \t]+\n/g,'\n').trim();
+  const cleaned=text.replace(/\[\[\s*ПРЕДЛОЖ(?:ИТЬ|ЕНИЕ|ЕНИЯ)\s*:\s*([^\]]+)\]\]/i,(m,f)=>{suggest=f.trim().replace(/[.?!]+$/,'');return'';}).replace(/[ \t]+\n/g,'\n').trim();
   return {cleaned,suggest};
 }
 function getName(){try{return localStorage.getItem('nova_name')||'';}catch(e){return'';}}
-const DEFAULT_PROXY='https://novaproxy.makar-opaleishukew.workers.dev';
-function getProxy(){if(cloudOn())return NOVA_CLOUD;try{return (localStorage.getItem('nova_proxy')||'').trim().replace(/\/+$/,'')||DEFAULT_PROXY;}catch(e){return DEFAULT_PROXY;}}
+function getProxy(){if(cloudOn())return NOVA_CLOUD;try{return (localStorage.getItem('nova_proxy')||'').trim().replace(/\/+$/,'');}catch(e){return'';}}
 function apiBase(){return getProxy()||'https://generativelanguage.googleapis.com';}
 
 function saveProxy(){
@@ -7693,7 +7906,7 @@ function writeSave(force){
   };
   if(waits.length&&!force)Promise.allSettled(waits).then(finish);else finish();
 }
-function save(){_saveDirty=true;clearTimeout(_saveT);_saveT=setTimeout(()=>writeSave(false),350);}
+function save(){try{syncSchedule();}catch(e){}_saveDirty=true;clearTimeout(_saveT);_saveT=setTimeout(()=>writeSave(false),350);}
 function flushSave(){if(_saveDirty){clearTimeout(_saveT);writeSave(true);}}
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushSave();});
 window.addEventListener('pagehide',flushSave);
